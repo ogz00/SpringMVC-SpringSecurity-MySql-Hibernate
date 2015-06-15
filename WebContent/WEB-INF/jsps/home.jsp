@@ -4,8 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,8 +13,9 @@
 	<h3>Home Page</h3>
 
 	<br>
-<a href="/SpringMVC//offers">offers</a>
-<br/>
+	<p><a href="${pageContext.request.contextPath}/offers">offers</a></p>
+	<p><a href="${pageContext.request.contextPath}/createoffer">create offer</a></p>
+	<br />
 	<!-- Usage og JSTL tags and jsp scripts with el expressions -->
 	<c:choose>
 		<c:when test="${name eq 'OguzHan'}">

@@ -1,5 +1,9 @@
 package org.oguz.spring.web.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -7,15 +11,22 @@ public class Offer
 {
 
 	private int id;
+	
+	@Size(min = 5, max = 50, message = "Name must be between 5 and 50 characters!")
 	private String name;
+	
+	@NotNull
+	@Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a valid email address")
 	private String email;
+	
+	@Size(min = 5, max = 250, message = "Text must be between 5 and 250 characters!")
 	private String text;
 
 	public Offer()
 	{
-		
+
 	}
-	
+
 	public Offer(int id, String name, String email, String text)
 	{
 		super();

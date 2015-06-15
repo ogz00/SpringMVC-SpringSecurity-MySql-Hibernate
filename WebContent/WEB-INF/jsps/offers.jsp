@@ -8,17 +8,26 @@
 <title>Hello World</title>
 </head>
 <body>
+	<p>
+		<a href="${pageContext.request.contextPath}/createoffer">create
+			offer</a>
+	</p>
+	<br />
 
 	<h3>OFFERS WIA SERVICE LAYER</h3>
 
-	<c:forEach var="row" items="${offers}">
-		Id: ${row.id}<br />
-    	Name: ${row.name}<br />
-    	Email: ${row.email}<br />
-    	Text: ${row.text}<br />
+	<c:forEach var="offer" items="${offers}">
+		<p>
+			<c:out value="${offer}"></c:out>
+		</p>
 		<br />
 	</c:forEach>
 
+	<p>
+		<a href="${pageContext.request.contextPath}/createoffer">create
+			offer</a>
+	</p>
+	<br />
 
 </body>
 </html>

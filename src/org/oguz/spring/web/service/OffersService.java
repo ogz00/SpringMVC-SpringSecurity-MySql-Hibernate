@@ -24,5 +24,6 @@ public class OffersService
 	{
 		return offersDao.getOffers();
 	}
+	
 
 }

@@ -4,6 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.lang.StringEscapeUtils;
+import org.oguz.spring.web.validation.ValidEmail;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,22 +18,23 @@ public class Offer
 	private String name;
 	
 	@NotNull
-	@Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a valid email address")
+	//@Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a valid email address")
+	@ValidEmail(min=6)
 	private String email;
 	
 	@Size(min = 5, max = 250, message = "Text must be between 5 and 250 characters!")
 	private String text;
-
+	
 	public Offer()
 	{
 
 	}
-
+		
 	public Offer(int id, String name, String email, String text)
 	{
 		super();
 		this.id = id;
-		this.name = name;
+		this.name = StringEscapeUtils.unescapeHtml(name);
 		this.email = email;
 		this.text = text;
 	}
@@ -39,7 +42,7 @@ public class Offer
 	public Offer(String name, String email, String text)
 	{
 		super();
-		this.name = name;
+		this.name =StringEscapeUtils.unescapeHtml(name);
 		this.email = email;
 		this.text = text;
 	}
@@ -56,12 +59,12 @@ public class Offer
 
 	public String getName()
 	{
-		return name;
+		return StringEscapeUtils.unescapeHtml(name);
 	}
 
 	public void setName(String name)
 	{
-		this.name = name;
+		this.name = StringEscapeUtils.unescapeHtml(name);
 	}
 
 	public String getEmail()

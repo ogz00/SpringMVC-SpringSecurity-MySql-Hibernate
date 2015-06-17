@@ -1,15 +1,18 @@
 package org.oguz.spring.web.controllers;
 
 import java.util.List;
+
 import javax.validation.Valid;
 
 import org.oguz.spring.web.model.Offer;
 import org.oguz.spring.web.service.OffersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,11 +27,12 @@ public class OffersController
 	{
 		this.offersService = offersService;
 	}
-
+		
 
 	@RequestMapping("/offers")
 	public String showOffers(Model model)
 	{
+		//offersService.throwException();
 		List<Offer> offers = offersService.getCurrent();
 
 		model.addAttribute("offers", offers);
@@ -37,9 +41,9 @@ public class OffersController
 	}
 
 	@RequestMapping("/createoffer")
-	public String createOffer()
+	public String createOffer(Model model)
 	{
-
+		model.addAttribute("offer", new Offer());	
 
 		return "createoffer";
 	}
@@ -49,25 +53,27 @@ public class OffersController
 	{
 		if (result.hasErrors())
 		{
-			System.out.println("form doesnt validate.");
+			
 			List<ObjectError> errors = result.getAllErrors();
 			model.addAttribute("errors", errors);
 
-			for (ObjectError error : errors)
+			/*for (ObjectError error : errors)
 			{
 				System.out.println(error.getDefaultMessage());
-			}
+			}*/
 
-			return "error";
+			return "createoffer";
 		}
 		else
 		{
-			System.out.println("form validated");
+			offersService.createOffer(offer);
 			return "offercreated";
 		}
 
 
 	}
+	
+
 
 	/*
 	 * mapping '/localhost:8080/SpringMVC/hello' url to helloworld.jsp

@@ -1,5 +1,14 @@
 @CHARSET "UTF-8";
 
+input[type=text] {
+	width: 250px;
+}
+
+textarea {
+	width: 250px;
+	height: 350px;
+}
+
 .formtable {
 	width: 400px;
 	padding: 10px;
@@ -16,11 +25,13 @@
 	margin-left: 10px;
 }
 
-input[type=text] {
-	width: 250px;
+.error{
+	font-size:small;
+	color: red;
+	margin-left:10px;
 }
 
-textarea {
-	width: 250px;
-	height: 350px;
+table.offers{
+	padding:10px;
+	border: 1px solid gray;
 }

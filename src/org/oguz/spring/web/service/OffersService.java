@@ -24,6 +24,16 @@ public class OffersService
 	{
 		return offersDao.getOffers();
 	}
-	
 
+
+	public void createOffer(Offer offer)
+	{
+		offersDao.createOffer(offer);
+
+	}
+
+	
+	public void throwException(){
+		offersDao.getOffer(9999);
+	}
 }

@@ -10,11 +10,7 @@
 <body>
 ERROR PAGE
 
-<c:forEach var="error" items="${errors}">
-		<p>
-			<c:out value="${error.getDefaultMessage()}"></c:out>
-		</p>
-		<br />
-	</c:forEach>
+
+	
 </body>
 </html>

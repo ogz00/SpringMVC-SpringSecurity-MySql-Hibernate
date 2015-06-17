@@ -8,7 +8,7 @@
 <title>Offer Created</title>
 </head>
 <body>
-		offer created..
+		offer created: <a href ="${pageContext.request.contextPath}/offers">click here to view offers</a>
 		<!--<c:out value="${offer}"></c:out> -->
 </body>
 </html>

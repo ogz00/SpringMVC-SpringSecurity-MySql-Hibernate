@@ -34,7 +34,7 @@ public class Offer
 	{
 		super();
 		this.id = id;
-		this.name = StringEscapeUtils.unescapeHtml(name);
+		this.name = name;
 		this.email = email;
 		this.text = text;
 	}
@@ -42,7 +42,7 @@ public class Offer
 	public Offer(String name, String email, String text)
 	{
 		super();
-		this.name =StringEscapeUtils.unescapeHtml(name);
+		this.name =name;
 		this.email = email;
 		this.text = text;
 	}
@@ -59,12 +59,12 @@ public class Offer
 
 	public String getName()
 	{
-		return StringEscapeUtils.unescapeHtml(name);
+		return name;
 	}
 
 	public void setName(String name)
 	{
-		this.name = StringEscapeUtils.unescapeHtml(name);
+		this.name = name;
 	}
 
 	public String getEmail()

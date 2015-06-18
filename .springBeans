@@ -10,6 +10,7 @@
 		<config>WebContent/WEB-INF/offers-servlet.xml</config>
 		<config>src/org/oguz/spring/web/config/dao--context.xml</config>
 		<config>src/org/oguz/spring/web/config/service-context.xml</config>
+		<config>src/org/oguz/spring/web/config/security-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

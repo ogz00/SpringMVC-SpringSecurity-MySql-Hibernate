@@ -27,12 +27,12 @@ public class OffersController
 	{
 		this.offersService = offersService;
 	}
-		
+
 
 	@RequestMapping("/offers")
 	public String showOffers(Model model)
 	{
-		//offersService.throwException();
+		// offersService.throwException();
 		List<Offer> offers = offersService.getCurrent();
 
 		model.addAttribute("offers", offers);
@@ -43,7 +43,7 @@ public class OffersController
 	@RequestMapping("/createoffer")
 	public String createOffer(Model model)
 	{
-		model.addAttribute("offer", new Offer());	
+		model.addAttribute("offer", new Offer());
 
 		return "createoffer";
 	}
@@ -53,14 +53,12 @@ public class OffersController
 	{
 		if (result.hasErrors())
 		{
-			
 			List<ObjectError> errors = result.getAllErrors();
 			model.addAttribute("errors", errors);
 
-			/*for (ObjectError error : errors)
-			{
-				System.out.println(error.getDefaultMessage());
-			}*/
+			/*
+			 * for (ObjectError error : errors) { System.out.println(error.getDefaultMessage()); }
+			 */
 
 			return "createoffer";
 		}
@@ -70,9 +68,7 @@ public class OffersController
 			return "offercreated";
 		}
 
-
 	}
-	
 
 
 	/*

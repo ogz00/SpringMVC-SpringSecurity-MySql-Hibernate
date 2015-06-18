@@ -11,10 +11,15 @@
 <title>Hello World</title>
 </head>
 <body>
-	<p>
-		<a href="${pageContext.request.contextPath}/createoffer">create
-			offer</a>
-	</p>
+	<table class="offers">
+		<tr>
+			<td><a href="${pageContext.request.contextPath}/createoffer">create
+					offer</a></td>
+
+			<td><a href="${pageContext.request.contextPath}/">home</a>
+			</td>
+		</tr>
+	</table>
 	<br />
 
 
@@ -39,14 +44,16 @@
 
 		</c:forEach>
 	</table>
+	<br/>
+<table class="offers">
+		<tr>
+			<td><a href="${pageContext.request.contextPath}/createoffer">create
+					offer</a></td>
 
-
-
-	<p>
-		<a href="${pageContext.request.contextPath}/createoffer">create
-			offer</a>
-	</p>
-	<br />
+			<td><a href="${pageContext.request.contextPath}/">home</a>
+			</td>
+		</tr>
+	</table>
 
 </body>
 </html>

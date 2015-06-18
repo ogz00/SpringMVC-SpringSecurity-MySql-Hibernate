@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component("offersDao")
-public class OffersDAO
+public class OffersDao
 {
 
 	private NamedParameterJdbcTemplate jdbc;

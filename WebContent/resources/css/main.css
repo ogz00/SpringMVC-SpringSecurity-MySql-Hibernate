@@ -3,7 +3,9 @@
 input[type=text] {
 	width: 250px;
 }
-
+input[type=password] {
+	width: 250px;
+}
 textarea {
 	width: 250px;
 	height: 350px;
@@ -34,4 +36,12 @@ textarea {
 table.offers{
 	padding:10px;
 	border: 1px solid gray;
+}
+
+
+p.error{
+	color: red;
+	margin-left:10px;
+	font-size:medium;
+	
 }

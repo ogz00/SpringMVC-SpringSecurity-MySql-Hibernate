@@ -12,52 +12,59 @@
 <title>Insert title here</title>
 </head>
 <body>
-	CREATE NEW OFFER
+	<h2>CREATE NEW ACCOUNT</h2>
 	<br />
 
-
 	<fr:form method="post"
-		action="${pageContext.request.contextPath}/docreate"
-		commandName="offer">
+		action="${pageContext.request.contextPath}/createaccount"
+		commandName="user">
 
 		<table class="formtable">
 			<tr>
-				<td class="label">Name:</td>
-				<td><fr:input class="control" path="name" name="name"
+				<td class="label">Username:</td>
+				<td><fr:input class="control" path="username" name="username"
 						type="text" /><br />
-				<fr:errors path="name" cssClass="error"></fr:errors></td>
-
+					<div class="error">
+						<fr:errors path="username"></fr:errors>
+					</div></td>
 			</tr>
 			<tr>
 				<td class="label">Email:</td>
 				<td><fr:input class="control" path="email" name="email"
 						type="text" /><br />
-				<fr:errors path="email" cssClass="error"></fr:errors></td>
+					<div class="error">
+						<fr:errors path="email"></fr:errors>
+					</div></td>
 			</tr>
 			<tr>
-				<td class="label">Offer:</td>
-				<td><fr:textarea class="control" path="text" name="text"
-						rows="10" cols="30"></fr:textarea><br />
-				<fr:errors path="text" cssClass="error"></fr:errors></td>
+				<td class="label">Password:</td>
+				<td><fr:input class="control" path="password" name="password"
+						type="password" /><br />
+					<div class="error">
+						<fr:errors path="password"></fr:errors>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="label">Confirm password:</td>
+				<td><input class="control" name="confirmpass" type="password" /><br />
+				</td>
 			</tr>
 			<tr>
 				<td class="label"></td>
-				<td><input class="control" value="Create Advert" type="submit" /></td>
+				<td><input class="control" value="Create Account" type="submit" /></td>
 			</tr>
-
-
-
 
 		</table>
 
 	</fr:form>
-	
+
+	<br />
+
 	<table class="offers">
 		<tr>
 			<td><a href="${pageContext.request.contextPath}/offers">offers</a></td>
 
-			<td><a href="${pageContext.request.contextPath}/">home</a>
-			</td>
+			<td><a href="${pageContext.request.contextPath}/">home</a></td>
 		</tr>
 	</table>
 

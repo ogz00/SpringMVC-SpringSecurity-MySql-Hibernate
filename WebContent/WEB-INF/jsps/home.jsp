@@ -7,14 +7,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="${pageContext.request.contextPath}/resource/css/main.css"
+	rel="stylesheet" type="text/css">
 <title>Home Page</title>
 </head>
 <body>
 	<h3>Home Page</h3>
 
-	<br>
-	<p><a href="${pageContext.request.contextPath}/offers">offers</a></p>
-	<p><a href="${pageContext.request.contextPath}/createoffer">create offer</a></p>
+	<table class="offers">
+		<tr>
+			<td><a href="${pageContext.request.contextPath}/createoffer">create
+					offer</a></td>
+
+			<td><a href="${pageContext.request.contextPath}/offers">offers</a>
+			</td>
+			<td> <a href="<c:url value="/newaccount"/>">Create New Account</a> </td>
+		</tr>
+	</table>
 	<br />
 	<!-- Usage og JSTL tags and jsp scripts with el expressions -->
 	<c:choose>
@@ -45,11 +55,11 @@
 	</sql:query>
 	<h2>DB Test Results --OFFERS WITH JNDI QUERY</h2>
 
-	<c:forEach var="row" items="${rs.rows}">
+<!-- 	<c:forEach var="row" items="${rs.rows}">
 		Id: ${row.id}<br />
     	Name: ${row.name}<br />
 		<br />
-	</c:forEach>
+	</c:forEach> -->
 
 </body>
 </html>

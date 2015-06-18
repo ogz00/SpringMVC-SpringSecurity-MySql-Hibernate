@@ -12,4 +12,4 @@ Easy integration of the resource files at the SpringMVC.
 
 Introduction to Spring Security and Login Page
 
-Usage of the Security-Context for Create Secure Users at the Database with Athority Roles.
+Usage of the Security-Context for Create Secure Users at the Database with Authority Roles.

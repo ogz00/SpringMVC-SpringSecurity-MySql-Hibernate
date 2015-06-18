@@ -1,6 +1,6 @@
 # Spring Tutorial - 2
 
-SpringMVC-MySql
+SpringMVC and Spring Security with MySql Database
 
 Created a simple form application on the JSP pages whiches integrated with validation annotations and spring form elements.
 

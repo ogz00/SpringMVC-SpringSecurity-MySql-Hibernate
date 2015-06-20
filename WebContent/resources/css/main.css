@@ -12,7 +12,7 @@ textarea {
 }
 
 .formtable {
-	width: 400px;
+	width: 600px;
 	padding: 10px;
 	border: 1px solid blue;
 	padding: 10px;
@@ -44,4 +44,10 @@ p.error{
 	margin-left:10px;
 	font-size:medium;
 	
+}
+
+.valid{
+	font-size:small;
+	color: green;
+	margin-left:10px;
 }

@@ -12,16 +12,16 @@ public class User
 {
 	
 	@NotBlank(message="Username cannot be blank")
-	@Size(min=8, max=25, message = "Username must be  8 and 25 characters long")
-	@Pattern(regexp="^\\w{8,}$", message="Username can only consist numbers, letters and the underscore characters")
+	@Size(min=8, max=25)
+	@Pattern(regexp="^\\w{8,}$")
 	private String username;
 	
 	@NotBlank(message="Password cannot be blank")
-	@Pattern(regexp="^\\S+$", message="Password cannot be contain spaces")
-	@Size(min=5, max =25, message="Password must be  5 and 25 characters long")
+	@Pattern(regexp="^\\S+$")
+	@Size(min=5, max =25)
 	private String password;
 	
-	@Email(message="Email cannot be blank")
+	@Email
 	private String email;
 	
 	private boolean enabled = false;

@@ -7,15 +7,58 @@
 
 <link href="${pageContext.request.contextPath}/resource/css/main.css"
 	rel="stylesheet" type="text/css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resource/js/jquery.js"></script>
+
+<script type="text/javascript">
+	function onLoad() {
+		$("#password").keyup(checkPasswordMatch);
+		$("#confirmpass").keyup(checkPasswordMatch);		
+		$("#details").submit(canSubmit);
+
+	}
+	
+	function canSubmit() {
+		var password = $("#password").val();
+		var confirmpass = $("#confirmpass").val();
+		
+		if(password != confirmpass) {
+			alert("Passwords do not match!");
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+	function checkPasswordMatch() {
+		var password = $("#password").val();
+		var confirmpass = $("#confirmpass").val();
+
+		if (password.length > 3 || confirmpass.length > 3) {
+			if (password==confirmpass) {
+				$("#matchpass").text("Password match.");
+				$("#matchpass").addClass("valid");
+				$("#matchpass").removeClass("error");
+			} else {
+				$("#matchpass").text("Password do not match.");
+				$("#matchpass").addClass("error");
+				$("#matchpass").removeClass("valid");
+			}
+		}
+	}
+
+	$(document).ready(onLoad);
+</script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>CREATE NEW ACCOUNT</title>
 </head>
 <body>
 	<h2>CREATE NEW ACCOUNT</h2>
 	<br />
 
-	<fr:form method="post"
+	<fr:form id="details" method="post"
 		action="${pageContext.request.contextPath}/createaccount"
 		commandName="user">
 
@@ -38,16 +81,17 @@
 			</tr>
 			<tr>
 				<td class="label">Password:</td>
-				<td><fr:input class="control" path="password" name="password"
-						type="password" /><br />
+				<td><fr:input id="password" class="control" path="password"
+						name="password" type="password" /><br />
 					<div class="error">
 						<fr:errors path="password"></fr:errors>
 					</div></td>
 			</tr>
 			<tr>
 				<td class="label">Confirm password:</td>
-				<td><input class="control" name="confirmpass" type="password" /><br />
-				</td>
+				<td><input id="confirmpass" class="control" name="confirmpass"
+					type="password" />
+					<div id="matchpass" class="error"></div></td>
 			</tr>
 			<tr>
 				<td class="label"></td>

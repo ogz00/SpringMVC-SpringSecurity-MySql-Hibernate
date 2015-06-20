@@ -10,11 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController
 {
 	// mapping root (/localhost:8080/SpringMVC/) url to home.jsp
-	@RequestMapping(("/"))
+	@RequestMapping("/")
 	public String showHome()
 	{
 
 		return "home";
+	}
+	@RequestMapping("/admin")
+	public String showAdmin()
+	{
+
+		return "admin";
 	}
 
 }

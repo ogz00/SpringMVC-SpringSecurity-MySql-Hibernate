@@ -10,6 +10,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/resource/css/main.css"
 	rel="stylesheet" type="text/css">
+
+<script>
+	function formSubmit() {
+
+		document.getElementById("logoutForm").submit();
+
+	}
+</script>
+
+
 <title>Home Page</title>
 </head>
 <body>
@@ -22,9 +32,29 @@
 
 			<td><a href="${pageContext.request.contextPath}/offers">offers</a>
 			</td>
-			<td> <a href="<c:url value="/newaccount"/>">Create New Account</a> </td>
+			<td><a href="<c:url value="/newaccount"/>">Create New
+					Account</a></td>
+
+
+			<td><form action="${pageContext.request.contextPath}/logout"
+					method="post" id="logoutForm">
+
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+					<p>
+						<a href="javascript:formSubmit()"> Logout</a>
+
+					</p>
+
+				</form></td>
+				
+				<td><a href="<c:url value="/admin"/>">Admin</a></td>
 		</tr>
 	</table>
+
+
+
+
 	<br />
 	<!-- Usage og JSTL tags and jsp scripts with el expressions -->
 	<c:choose>
@@ -55,7 +85,7 @@
 	</sql:query>
 	<h2>DB Test Results --OFFERS WITH JNDI QUERY</h2>
 
-<!-- 	<c:forEach var="row" items="${rs.rows}">
+	<!-- 	<c:forEach var="row" items="${rs.rows}">
 		Id: ${row.id}<br />
     	Name: ${row.name}<br />
 		<br />

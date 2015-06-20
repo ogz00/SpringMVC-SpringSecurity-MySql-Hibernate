@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,20 +14,19 @@
 <script type="text/javascript">
 	function onLoad() {
 		$("#password").keyup(checkPasswordMatch);
-		$("#confirmpass").keyup(checkPasswordMatch);		
+		$("#confirmpass").keyup(checkPasswordMatch);
 		$("#details").submit(canSubmit);
 
 	}
-	
+
 	function canSubmit() {
 		var password = $("#password").val();
 		var confirmpass = $("#confirmpass").val();
-		
-		if(password != confirmpass) {
+
+		if (password != confirmpass) {
 			alert("Passwords do not match!");
 			return false;
-		}
-		else {
+		} else {
 			return true;
 		}
 	}
@@ -36,12 +36,14 @@
 		var confirmpass = $("#confirmpass").val();
 
 		if (password.length > 3 || confirmpass.length > 3) {
-			if (password==confirmpass) {
-				$("#matchpass").text("Password match.");
+			if (password == confirmpass) {
+				$("#matchpass").text("<fmt:message key ='MatchedPassword.user.password'/>");
 				$("#matchpass").addClass("valid");
 				$("#matchpass").removeClass("error");
 			} else {
-				$("#matchpass").text("Password do not match.");
+				$("#matchpass")
+						.text(
+								"<fmt:message key='UnmatchedPasswords.user.password'/>");
 				$("#matchpass").addClass("error");
 				$("#matchpass").removeClass("valid");
 			}
@@ -55,6 +57,7 @@
 <title>CREATE NEW ACCOUNT</title>
 </head>
 <body>
+
 	<h2>CREATE NEW ACCOUNT</h2>
 	<br />
 

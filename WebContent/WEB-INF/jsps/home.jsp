@@ -25,7 +25,7 @@
 <body>
 	<h3>Home Page</h3>
 
-	<table class="offers">
+	<table class="CSSTableGenerator">
 		<tr>
 			<td><a href="${pageContext.request.contextPath}/createoffer">create
 					offer</a></td>

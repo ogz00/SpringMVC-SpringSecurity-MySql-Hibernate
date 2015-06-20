@@ -11,22 +11,14 @@
 <title>Hello World</title>
 </head>
 <body>
-	<table class="offers">
-		<tr>
-			<td><a href="${pageContext.request.contextPath}/createoffer">create
-					offer</a></td>
 
-			<td><a href="${pageContext.request.contextPath}/">home</a>
-			</td>
-		</tr>
-	</table>
 	<br />
 
 
 
 
 	<h3>OFFERS WIA SERVICE LAYER</h3>
-	<table class="offers">
+	<table class="CSSTableGenerator">
 		<tr>
 			<td>Name</td>
 			<td>Email</td>
@@ -44,14 +36,13 @@
 
 		</c:forEach>
 	</table>
-	<br/>
-<table class="offers">
+	<br />
+	<table class="CSSTableGenerator">
 		<tr>
-			<td><a href="${pageContext.request.contextPath}/createoffer">create
-					offer</a></td>
+			<td><a href="${pageContext.request.contextPath}/createoffer">Create
+					Offer</a></td>
 
-			<td><a href="${pageContext.request.contextPath}/">home</a>
-			</td>
+			<td><a href="${pageContext.request.contextPath}/">Home</a></td>
 		</tr>
 	</table>
 

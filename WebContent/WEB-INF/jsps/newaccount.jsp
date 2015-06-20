@@ -65,8 +65,10 @@
 		action="${pageContext.request.contextPath}/createaccount"
 		commandName="user">
 
-		<table class="formtable">
+		<table class="CSSTableGenerator">
+		<tr></tr>
 			<tr>
+			
 				<td class="label">Username:</td>
 				<td><fr:input class="control" path="username" name="username"
 						type="text" /><br />
@@ -107,7 +109,7 @@
 
 	<br />
 
-	<table class="offers">
+	<table class="CSSTableGenerator">
 		<tr>
 			<td><a href="${pageContext.request.contextPath}/offers">offers</a></td>
 

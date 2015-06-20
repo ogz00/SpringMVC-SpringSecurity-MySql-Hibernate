@@ -20,7 +20,8 @@
 		action="${pageContext.request.contextPath}/docreate"
 		commandName="offer">
 
-		<table class="formtable">
+		<table class="CSSTableGenerator">
+		<tr><td></td><td></td></tr>
 			<tr>
 				<td class="label">Name:</td>
 				<td><fr:input class="control" path="name" name="name"
@@ -52,11 +53,11 @@
 
 	</fr:form>
 	
-	<table class="offers">
+	<table class="CSSTableGenerator">
 		<tr>
-			<td><a href="${pageContext.request.contextPath}/offers">offers</a></td>
+			<td><a href="${pageContext.request.contextPath}/offers" style="font-size:16px">Offers</a></td>
 
-			<td><a href="${pageContext.request.contextPath}/">home</a>
+			<td><a href="${pageContext.request.contextPath}/" style="font-size:16px">Home</a>
 			</td>
 		</tr>
 	</table>

@@ -17,9 +17,9 @@ Usages of the Security-Context for Create Secure Users at the Database with Auth
 (this tutorial is using JNDI data source, for use that add something like that:
 
   
-    	<Resource name="jdbc/SpringDB" auth="Container" type="javax.sql.DataSource"
+	<Resource name="jdbc/SpringDB" auth="Container" type="javax.sql.DataSource"
 	maxActive="100" maxIdle="30" maxWait="10000" username="root"
 	password="admin" driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/springtutorial" />
 
-		to your Server Directory's context.xm for Tomcat.
+	to your Server Directory's context.xm for Tomcat.

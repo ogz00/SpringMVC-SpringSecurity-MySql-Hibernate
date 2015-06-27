@@ -34,6 +34,8 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/offers"
 			access="permitAll" />
+		<security:intercept-url pattern="/users"
+			access="permitAll" />
 		<security:intercept-url pattern="/login"
 			access="permitAll" />
 		<security:form-login login-page="/login"

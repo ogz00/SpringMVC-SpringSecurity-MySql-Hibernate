@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -32,23 +34,31 @@
 
 			<td><a href="${pageContext.request.contextPath}/offers">offers</a>
 			</td>
+			<td><a href="${pageContext.request.contextPath}/users">users</a>
+			</td>
 			<td><a href="<c:url value="/newaccount"/>">Create New
 					Account</a></td>
 
+			<sec:authorize access="isAuthenticated()">
+				<td><form action="${pageContext.request.contextPath}/logout"
+						method="post" id="logoutForm">
 
-			<td><form action="${pageContext.request.contextPath}/logout"
-					method="post" id="logoutForm">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<p>
+							<a href="javascript:formSubmit()"> Logout</a>
 
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
-					<p>
-						<a href="javascript:formSubmit()"> Logout</a>
+						</p>
 
-					</p>
-
-				</form></td>
-				
+					</form></td>
+			</sec:authorize>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<td><a href="<c:url value="/admin"/>">Admin</a></td>
+			</sec:authorize>
+			<sec:authorize access="!isAuthenticated()">
+				<td><a href="<c:url value="/login"/>">Login</a></td>
+			</sec:authorize>
+
 		</tr>
 	</table>
 

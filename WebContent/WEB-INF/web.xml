@@ -3,7 +3,6 @@
   <display-name>SpringMVC</display-name>
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
-
   </welcome-file-list>
   <description>Spring Database</description>
   <resource-ref>

@@ -43,6 +43,16 @@ public class LoginController
 
 		return "loggedout";
 	}
+	@RequestMapping("/users")
+	public String showOffers(Model model)
+	{
+		// offersService.throwException();
+		List<User> users = this.usersService.getCurrent();
+
+		model.addAttribute("users", users);
+
+		return "users";
+	}
 
 	@RequestMapping("/newaccount")
 	public String showNewAccount(Model model)
@@ -61,7 +71,7 @@ public class LoginController
 			return "newaccount";
 		}
 
-		user.setAuthority("user");
+		user.setAuthority("ROLE_USER");
 		user.setEnabled(true);
 
 		if (usersService.exists(user.getUsername()))
@@ -74,7 +84,7 @@ public class LoginController
 		usersService.createUser(user);
 
 
-		return "accountcreated";
+		return "redirect:users";
 
 
 	}

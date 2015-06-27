@@ -65,7 +65,7 @@ public class OffersController
 		else
 		{
 			offersService.createOffer(offer);
-			return "offercreated";
+			return "redirect:offers";
 		}
 
 	}

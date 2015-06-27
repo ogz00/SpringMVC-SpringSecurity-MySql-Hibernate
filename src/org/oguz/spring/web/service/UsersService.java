@@ -1,6 +1,8 @@
 package org.oguz.spring.web.service;
 
 
+import java.util.List;
+
 import org.oguz.spring.web.model.User;
 import org.oguz.spring.web.model.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +30,13 @@ public class UsersService
 
 	public boolean exists(String username)
 	{
-		
+
 		return usersDao.exists(username);
+	}
+
+	public List<User> getCurrent()
+	{
+		return this.usersDao.getUsers();
 	}
 
 }

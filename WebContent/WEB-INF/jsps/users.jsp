@@ -22,6 +22,7 @@
 			<td>User Name</td>
 			<td>Email</td>
 
+
 		</tr>
 		<c:forEach var="user" items="${users}">
 
@@ -29,6 +30,8 @@
 				<td><c:out value="${user.username}"></c:out></td>
 
 				<td><c:out value="${user.email}"></c:out></td>
+
+
 
 			</tr>
 

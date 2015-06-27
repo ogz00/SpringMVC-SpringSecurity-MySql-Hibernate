@@ -26,6 +26,11 @@
 </head>
 <body>
 	<h3>Home Page</h3>
+	
+	<sec:authorize access="isRememberMe()">
+		<h2># This user is login by "Remember Me Cookies".</h2>
+	</sec:authorize>
+
 
 	<table class="CSSTableGenerator">
 		<tr>

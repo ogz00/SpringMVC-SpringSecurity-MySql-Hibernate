@@ -21,12 +21,18 @@
 
 		<table class="formtable">
 			<tr>
-				<td>User:</td>
-				<td><input type='text' name='username' value=''></td>
+				<td>Username:</td>
+				<td><input type='text' name='username' style="width:200px"/></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><input type='password' name='password' /></td>
+				<td><input type='password' name='password' style="width:200px"/></td>
+			</tr>
+
+			<tr>
+				<td>Remember Me:</td>
+				<td><input type='checkbox' name='_spring_security_remember_me'
+					checked="checked" /></td>
 			</tr>
 			<tr>
 				<td colspan='2'><input name="submit" type="submit"
@@ -34,11 +40,11 @@
 			</tr>
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
-			<!-- <input name="_csrf" type="hidden"
-				value="cb375bb7-bb5f-4976-adae-5157f4ecbe76" /> -->
+
 		</table>
 	</form>
 	<br />
 	<a href="<c:url value="/newaccount"/>">Create New Account</a>
+	<a href="<c:url value="/"/>">Home</a>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.oguz.spring.web.model.User;
 import org.oguz.spring.web.model.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 @Service("usersService")
@@ -20,7 +21,8 @@ public class UsersService
 		this.usersDao = usersDao;
 	}
 
-
+	
+	//@Secured("ROLE_ADMIN")
 	public void createUser(User user)
 	{
 		usersDao.createUser(user);
@@ -37,6 +39,12 @@ public class UsersService
 	public List<User> getCurrent()
 	{
 		return this.usersDao.getUsers();
+	}
+	
+	@Secured("ROLE_ADMIN")
+	public List<User> getAllUsersAuth()
+	{
+		return this.usersDao.getAllUsersAuth();
 	}
 
 }

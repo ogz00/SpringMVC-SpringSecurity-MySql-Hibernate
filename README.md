@@ -25,7 +25,7 @@ Usages of the Security-Context for Create Secure Users at the Database with Auth
 	example usage: add this codes inside of the context.xml for Tomcat.
 	
 -------------------------------------------------------------------------------------------------------------
-<a href="https://tomcat.apache.org/tomcat-5.5-doc/jndi-resources-howto.html#UserDatabase_Resources"> Apache 	Tomcat</a>
+<a target="_blank" href="https://tomcat.apache.org/tomcat-5.5-doc/jndi-resources-howto.html#UserDatabase_Resources"> Apache Tomcat</a>
 
 -------------------------------------------------------------------------------------------------------------
 	

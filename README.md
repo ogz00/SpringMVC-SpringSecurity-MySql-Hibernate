@@ -31,4 +31,6 @@ Usages of the Security-Context for Create Secure Users at the Database with Auth
 	
 Provided Apache Tiles 2.2.2 Integration. So that application has better gui with header-body-footer parts, anymore.
 
+"JUnit Test Cases" and "Log4j Properties" were integrated. For testing case created 2 seperate datasource like dev and production. Attached SQL files for to be able to automatically generate production and test databases.
+
 

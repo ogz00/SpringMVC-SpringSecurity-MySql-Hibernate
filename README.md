@@ -14,7 +14,7 @@ Introduction to Spring Security, Login and Admin Pages
 
 Usages of the Security-Context for Create Secure Users at the Database with Authority Roles.
 
-(this tutorial is using JNDI data source, for use that add something like that:
+(this tutorial is using JNDI data source, for use that add something like following configuration to your Server Directory:
 
   
 	<Resource name="jdbc/SpringDB" auth="Container" type="javax.sql.DataSource"
@@ -22,7 +22,10 @@ Usages of the Security-Context for Create Secure Users at the Database with Auth
 	password="admin" driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/springtutorial" />
 
-	to your Server Directory's context.xm for Tomcat.
+	example usage: add this codes inside of the context.xml for Tomcat.
+	
+	
+	<a href="https://tomcat.apache.org/tomcat-5.5-doc/jndi-resources-howto.html#UserDatabase_Resources"> Apache 	Tomcat</a>
 	
 -------------------------------------------------------------------------------------------------------------
 

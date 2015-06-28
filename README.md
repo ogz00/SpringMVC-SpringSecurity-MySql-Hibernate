@@ -10,7 +10,7 @@ Usage of the CRUD operation with SpringMVC pattern at the jsp pages, its also de
 
 Easy integration of the resource files at the SpringMVC.
 
-Introduction to Spring Security and Login Page
+Introduction to Spring Security, Login and Admin Pages
 
 Usages of the Security-Context for Create Secure Users at the Database with Authority Roles.
 
@@ -23,3 +23,9 @@ Usages of the Security-Context for Create Secure Users at the Database with Auth
 	url="jdbc:mysql://localhost:3306/springtutorial" />
 
 	to your Server Directory's context.xm for Tomcat.
+	
+-------------------------------------------------------------------------------------------------------------
+
+Provided Apache Tiles 2.2.2 Integration. So that application has better gui with header-body-footer parts, anymore.
+
+

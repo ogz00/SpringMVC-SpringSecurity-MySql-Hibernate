@@ -13,21 +13,21 @@
 	<mvc:annotation-driven />
 	<mvc:interceptors>
 
-	 	<bean id="webContentInterceptor"
+		<bean id="webContentInterceptor"
 			class="org.springframework.web.servlet.mvc.WebContentInterceptor">
-			<!--<property name="cacheSeconds" value="0" />
+			<property name="cacheSeconds" value="0" />
 			<property name="useExpiresHeader" value="true" />
 			<property name="useCacheControlHeader" value="true" />
-			<property name="useCacheControlNoStore" value="true" /> -->
+			<property name="useCacheControlNoStore" value="true" />
 		</bean>
 	</mvc:interceptors>
 	<mvc:annotation-driven></mvc:annotation-driven>
 
-	<bean id="jspViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsps/"></property>
-		<property name="suffix" value=".jsp"></property>
-	</bean>
+	<!--<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/jsps/"></property> <property name="suffix" 
+		value=".jsp"></property> </bean> -->
+
+
 	<mvc:resources location="/resources/" mapping="/resource/**">
 	</mvc:resources>
 
@@ -35,4 +35,19 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="org.oguz.spring.web.messages.messages_en_US"></property>
 	</bean>
+
+	<bean id="tilesViewResolver"
+		class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
+	</bean>
+
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/layout/default.xml</value>
+			</list>
+		</property>
+	</bean>
+
+
 </beans>

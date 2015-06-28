@@ -13,23 +13,24 @@ public class Offer
 {
 
 	private int id;
-	
+
 	@Size(min = 5, max = 50, message = "Name must be between 5 and 50 characters!")
 	private String name;
-	
+
 	@NotNull
-	//@Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a valid email address")
-	@ValidEmail(min=6)
+	// @Pattern(regexp = ".*\\@.*\\..*", message =
+// "This does not appear to be a valid email address")
+	@ValidEmail(min = 6)
 	private String email;
-	
+
 	@Size(min = 5, max = 250, message = "Text must be between 5 and 250 characters!")
 	private String text;
-	
+
 	public Offer()
 	{
 
 	}
-		
+
 	public Offer(int id, String name, String email, String text)
 	{
 		super();
@@ -42,7 +43,7 @@ public class Offer
 	public Offer(String name, String email, String text)
 	{
 		super();
-		this.name =name;
+		this.name = name;
 		this.email = email;
 		this.text = text;
 	}
@@ -92,6 +93,51 @@ public class Offer
 	{
 		return "OfferDao [id=" + id + ", name=" + name + ", email=" + email + ", text=" + text +
 			"]";
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Offer other = (Offer)obj;
+		if (email == null)
+		{
+			if (other.email != null)
+				return false;
+		}
+		else if (!email.equals(other.email))
+			return false;
+		if (name == null)
+		{
+			if (other.name != null)
+				return false;
+		}
+		else if (!name.equals(other.name))
+			return false;
+		if (text == null)
+		{
+			if (other.text != null)
+				return false;
+		}
+		else if (!text.equals(other.text))
+			return false;
+		return true;
 	}
 
 

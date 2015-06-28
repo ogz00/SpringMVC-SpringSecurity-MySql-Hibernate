@@ -9,7 +9,9 @@ import javax.sql.DataSource;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.oguz.spring.web.model.Offer;
+import org.oguz.spring.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -91,9 +93,8 @@ public class OffersDao
 
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
 
-		return jdbc.update(
-			"INSERT INTO `springtutorial`.`offers` (`name`, `email`, `text`) VALUES (:name, "
-				+ ":email, :text);", params) == 1;
+		return jdbc.update("INSERT INTO `offers` (`name`, `email`, `text`) VALUES (:name, "
+			+ ":email, :text);", params) == 1;
 
 
 	}
@@ -107,9 +108,8 @@ public class OffersDao
 		SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(offers.toArray());
 		// if you dont want to namedparamjdbctemplate : jdbc.getJdbcOperations().batchUpdate(arg0)
 
-		return jdbc.batchUpdate(
-			"INSERT INTO `springtutorial`.`offers` (`name`, `email`, `text`) VALUES (:name, "
-				+ ":email, :text);", params);
+		return jdbc.batchUpdate("INSERT INTO `offers` (`name`, `email`, `text`) VALUES (:name, "
+			+ ":email, :text);", params);
 	}
 
 	public boolean updateOffer(Offer offer)
@@ -129,6 +129,13 @@ public class OffersDao
 
 		return jdbc.update("delete from offers where id=:id ", params) == 1;
 
+	}
+
+
+	public List<Offer> getAllOffers()
+	{
+
+		return jdbc.query("select * from offers", BeanPropertyRowMapper.newInstance(Offer.class));
 	}
 
 

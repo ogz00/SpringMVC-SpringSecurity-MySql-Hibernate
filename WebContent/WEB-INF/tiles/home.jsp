@@ -19,7 +19,7 @@
 		<td><a href="${pageContext.request.contextPath}/createoffer">Create
 				Offer </a></td>
 
-		<td><a href="${pageContext.request.contextPath}/offers">Offers</a>
+		<td><a href="${pageContext.request.contextPath}/offers">Show Offers</a>
 		</td>
 		<td><a href="${pageContext.request.contextPath}/users">Users</a>
 		</td>

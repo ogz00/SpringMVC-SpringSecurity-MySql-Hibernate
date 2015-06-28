@@ -49,11 +49,11 @@ public class UsersDao
 		params.addValue("authority", user.getAuthority());
 
 		jdbc.update(
-			"INSERT INTO `springtutorial`.`users` (`username`, `password`,`email`, `enabled`) VALUES (:username, :password,"
+			"INSERT INTO `users` (`username`, `password`,`email`, `enabled`) VALUES (:username, :password,"
 				+ " :email, :enabled);", params);
 
 		return jdbc.update(
-			"INSERT INTO `springtutorial`.`authorities` (`username`, `authority`) VALUES (:username, :authority);",
+			"INSERT INTO `authorities` (`username`, `authority`) VALUES (:username, :authority);",
 			params) == 1;
 	}
 
@@ -75,6 +75,8 @@ public class UsersDao
 
 					user.setUsername(rs.getString("username"));
 					user.setEmail(rs.getString("email"));
+					user.setEnabled(rs.getBoolean("enabled"));
+					user.setAuthority(rs.getString("authority"));
 
 					return user;
 				}
@@ -94,7 +96,7 @@ public class UsersDao
 	{
 
 		return jdbc.queryForObject(
-			"select count(*) from springtutorial.users where username = :username",
+			"select count(*) from users where username = :username",
 			new MapSqlParameterSource("username", username), Integer.class) > 0;
 	}
 	

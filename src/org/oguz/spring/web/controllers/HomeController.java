@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.oguz.spring.web.model.User;
 import org.oguz.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController
 {
 	private UsersService userService;
+	
+	private static Logger logger = Logger.getLogger(HomeController.class);
 
 	@Autowired
 	public void setUserservice(UsersService userService)
@@ -29,14 +32,14 @@ public class HomeController
 	@RequestMapping("/")
 	public String showHome()
 	{
-
+		logger.info("Showing Home page ..");
 		return "home";
 	}
 
 	@RequestMapping("/denied")
 	public String showDenied()
 	{
-
+		logger.info("Access Denied!! ..");
 		return "denied";
 	}
 

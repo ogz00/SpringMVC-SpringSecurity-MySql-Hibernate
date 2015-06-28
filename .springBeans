@@ -11,6 +11,7 @@
 		<config>src/org/oguz/spring/web/config/dao--context.xml</config>
 		<config>src/org/oguz/spring/web/config/service-context.xml</config>
 		<config>src/org/oguz/spring/web/config/security-context.xml</config>
+		<config>test/org/oguz/spring/web/test/config/datasource.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

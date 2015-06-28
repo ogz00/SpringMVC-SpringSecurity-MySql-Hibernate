@@ -21,13 +21,15 @@ Usages of the Security-Context for Create Secure Users at the Database with Auth
 	maxActive="100" maxIdle="30" maxWait="10000" username="root"
 	password="admin" driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/springtutorial" />
+
+-------------------------------------------------------------------------------------------------------------
+example usage: add this codes to context.xml for <a target="_blank" href="https://tomcat.apache.org/tomcat-5.5-doc/jndi-resources-howto.html#UserDatabase_Resources"> Apache Tomcat</a>
+
 	
 	<!--
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/SpringDB"
 		expected-type="javax.sql.DataSource">
 	</jee:jndi-lookup> -->
--------------------------------------------------------------------------------------------------------------
-example usage: add this codes to context.xml for <a target="_blank" href="https://tomcat.apache.org/tomcat-5.5-doc/jndi-resources-howto.html#UserDatabase_Resources"> Apache Tomcat</a>
 
 -------------------------------------------------------------------------------------------------------------
 	

@@ -9,7 +9,7 @@ Spring MVC pattern with service layer and controllers objects.
 CRUD operation from both of jsp pages and spring core
 its also depends on the MySql database.
 
-Showed Integration of the spring config files with the web.xml. 
+Showed Integration of the 'Spring Config' files with the 'web.xml'. 
 
 Configuration of the "Spring Security" and Create authenticated pages like Login and Admin Pages.
 
@@ -17,13 +17,13 @@ Security-Context Integration for Create Secure Users at the Database with Author
 
 -------------------------------------------------------------------------------------------------------------
 (this tutorial is using JNDI data source; 
-	<!--
+	
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/SpringDB"
 		expected-type="javax.sql.DataSource">
-	</jee:jndi-lookup> -->
+	</jee:jndi-lookup> 
 
 
-for use that add something like following configuration to your Server Directory:
+Next, modify $CATALINA_BASE/conf/server.xml to create the UserDatabase resource based on your XMl file. It should look something like this:
 
   
 	<Resource name="jdbc/SpringDB" auth="Container" type="javax.sql.DataSource"

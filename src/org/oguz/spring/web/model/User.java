@@ -10,38 +10,45 @@ import org.springframework.stereotype.Component;
 @Component
 public class User
 {
-	
-	@NotBlank(message="Username cannot be blank")
-	@Size(min=8, max=25)
-	@Pattern(regexp="^\\w{8,}$")
+
+	@NotBlank
+	@Size(min = 8, max = 25)
+	@Pattern(regexp = "^\\w{8,}$")
 	private String username;
-	
-	@NotBlank(message="Password cannot be blank")
-	@Pattern(regexp="^\\S+$")
-	@Size(min=5, max =25)
+
+	@NotBlank
+	@Pattern(regexp = "^\\S+$")
+	@Size(min = 5, max = 25)
 	private String password;
-	
+
 	@Email
 	private String email;
-	
+
+	@NotBlank
+	@Size(min = 5, max = 60)
+	private String name;
+
 	private boolean enabled = false;
 	private String authority;
-	
+
 
 	public User()
 	{
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String username, String password, String email, boolean enabled, String authority)
+	public User(String username, String name, String password, String email, boolean enabled,
+		String authority)
 	{
 		super();
 		this.username = username;
+		this.name = name;
 		this.password = password;
 		this.email = email;
 		this.enabled = enabled;
 		this.authority = authority;
 	}
+
 
 	public String getUsername()
 	{
@@ -93,6 +100,16 @@ public class User
 		this.email = email;
 	}
 
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
 	@Override
 	public int hashCode()
 	{
@@ -101,6 +118,7 @@ public class User
 		result = prime * result + ((authority == null) ? 0 : authority.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (enabled ? 1231 : 1237);
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -131,6 +149,13 @@ public class User
 			return false;
 		if (enabled != other.enabled)
 			return false;
+		if (name == null)
+		{
+			if (other.name != null)
+				return false;
+		}
+		else if (!name.equals(other.name))
+			return false;
 		if (username == null)
 		{
 			if (other.username != null)
@@ -140,7 +165,13 @@ public class User
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString()
+	{
+		return "User [username=" + username + ", email=" + email + ", name=" + name + ", enabled=" +
+			enabled + ", authority=" + authority + "]";
+	}
+
 
 }

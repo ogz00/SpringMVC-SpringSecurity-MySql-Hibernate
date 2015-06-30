@@ -45,16 +45,17 @@ public class UsersDao
 		params.addValue("username", user.getUsername());
 		params.addValue("password", passwordEncoder.encode(user.getPassword()));
 		params.addValue("email", user.getEmail());
+		params.addValue("name", user.getName());
 		params.addValue("enabled", user.isEnabled());
 		params.addValue("authority", user.getAuthority());
 
-		jdbc.update(
-			"INSERT INTO `users` (`username`, `password`,`email`, `enabled`) VALUES (:username, :password,"
-				+ " :email, :enabled);", params);
-
 		return jdbc.update(
+			"INSERT INTO `users` (`username`, `name`, `password`,`email`, `enabled`, `authority`) VALUES (:username, :name, :password,"
+				+ " :email, :enabled, :authority);", params) ==1;
+
+		/*return jdbc.update(
 			"INSERT INTO `authorities` (`username`, `authority`) VALUES (:username, :authority);",
-			params) == 1;
+			params) == 1;*/
 	}
 
 	// GET ALL OFFERS FROM OFFERS TABLE
@@ -74,6 +75,7 @@ public class UsersDao
 					User user = new User();
 
 					user.setUsername(rs.getString("username"));
+					user.setName(rs.getString("name"));
 					user.setEmail(rs.getString("email"));
 					user.setEnabled(rs.getBoolean("enabled"));
 					user.setAuthority(rs.getString("authority"));
@@ -87,7 +89,7 @@ public class UsersDao
 	{
 
 		return jdbc.query(
-			"select * from users, authorities where users.username=authorities.username",
+			"select * from users",
 			BeanPropertyRowMapper.newInstance(User.class));
 	}
 

@@ -23,6 +23,15 @@
 				</div></td>
 		</tr>
 		<tr>
+
+			<td class="label">Name:</td>
+			<td><fr:input class="control" path="name" name="name"
+					type="text" /><br />
+				<div class="error">
+					<fr:errors path="name"></fr:errors>
+				</div></td>
+		</tr>
+		<tr>
 			<td class="label">Email:</td>
 			<td><fr:input class="control" path="email" name="email"
 					type="text" /><br />

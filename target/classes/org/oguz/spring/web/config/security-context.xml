@@ -12,8 +12,8 @@
 		<security:authentication-provider>
 			<security:jdbc-user-service
 				data-source-ref="dataSource"
-				authorities-by-username-query="select * from authorities where binary username = ?"
-				users-by-username-query="select * from users where binary username = ?"
+				authorities-by-username-query="select username, authority from users where binary username = ?"
+				users-by-username-query="select username, password, enabled from users where binary username = ?"
 				id="jdbcUserService" />
 			<security:password-encoder ref="passwordEncoder"></security:password-encoder>
 		</security:authentication-provider>
@@ -28,6 +28,8 @@
 		<security:intercept-url pattern="/docreate"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/offercreated"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="offerdeleted"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/resource/**"

@@ -12,15 +12,35 @@
 	<h2># This user is login by "Remember Me Cookies".</h2>
 </sec:authorize>
 
+<br>
+<table class="CSSTableGenerator">
+	<tr>
+		<td><c:choose>
+				<c:when test="${hasOffer}">
 
+					<a href="${pageContext.request.contextPath}/createoffer">Edit/Delete
+						Your Current Offer </a>
+				</c:when>
+				<c:otherwise>
+					<a href="${pageContext.request.contextPath}/createoffer">Create
+						Offer </a>
+				</c:otherwise>
+			</c:choose></td>
+	</tr>
+</table>
+<br>
+<br>
+<br>
 <table class="CSSTableGenerator">
 
 	<tr>
-		<td><a href="${pageContext.request.contextPath}/createoffer">Create
-				Offer </a></td>
+		<c:if test="${!hasOffer}">
+			<td><a href="${pageContext.request.contextPath}/createoffer">Create
+					Offer </a></td>
+		</c:if>
 
-		<td><a href="${pageContext.request.contextPath}/offers">Show Offers</a>
-		</td>
+		<td><a href="${pageContext.request.contextPath}/offers">Show
+				Offers</a></td>
 		<td><a href="${pageContext.request.contextPath}/users">Users</a>
 		</td>
 		<td><a href="<c:url value="/newaccount"/>">Create New Account</a></td>
@@ -31,25 +51,7 @@
 </table>
 
 
-
-
 <br />
-<!-- Usage og JSTL tags and jsp scripts with el expressions -->
-<c:choose>
-	<c:when test="${name eq 'OguzHan'}">
-
-		<p>Session is:
-		<h3><%=session.getAttribute("name")%></h3>
-
-
-	</c:when>
-
-	<c:otherwise>
-
-		<h3></h3>
-	</c:otherwise>
-</c:choose>
-
 
 
 <!-- DB TEST for this part you should setting your JNDI datasource according to 
@@ -58,13 +60,12 @@
 	
 		It is quite simple for start to configure connection pool with JNDI
 	-->
-<sql:query var="rs" dataSource="jdbc/SpringDB">
-		select id, name, email, text from offers
-	</sql:query>
-<h2></h2>
+<!--<sql:query var="rs" dataSource="jdbc/SpringDB">
+		select id, username, text from offers
+	</sql:query> -->
 
 <!-- 	<c:forEach var="row" items="${rs.rows}">
 		Id: ${row.id}<br />
-    	Name: ${row.name}<br />
+    	Username: ${row.username}<br />
 		<br />
 	</c:forEach> -->

@@ -19,6 +19,9 @@ textarea {
 	border: 1px solid blue;
 	padding: 10px;
 }
+input.delete{
+	border:2px solid red;
+}
 
 .CSSTableGenerator {
 	margin: 0px;
@@ -77,6 +80,7 @@ textarea {
 	
 }
 
+
 .CSSTableGenerator tr:nth-child(odd) {
 	background-color: #ffaa56;
 }
@@ -86,19 +90,23 @@ textarea {
 }
 
 .CSSTableGenerator td {
-	vertical-align: middle;
+	vertical-align: top;
 	border: 1px solid #000000;
 	border-width: 0px 1px 1px 0px;
 	text-align: left;
 	padding: 7px;
-	font-size: 13px;
+	font-size: 15px;
 	font-family: Arial;
 	font-weight: bold;
-	color: #000000;
+	color: black;
 }
 
 .CSSTableGenerator a {
 	text-decoration: none
+}
+.CSSTableGenerator a:HOVER {
+	color:white;
+	
 }
 
 .CSSTableGenerator tr:last-child td {
@@ -152,7 +160,8 @@ textarea {
 
 .label {
 	text-align: right;
-	vertical-align: top;
+	vertical-align: top !important;
+	font-color:purple;
 }
 
 .control {
@@ -226,9 +235,11 @@ a.login {
 	right: 40px;
 	font-size: x-large;
 	color: white;
+	text-shadow:2px 2px 2px black;
 }
 a.login:hover{
 	color:purple;
+	
 }
 
 a.admin {
@@ -238,17 +249,20 @@ a.admin {
 	left: 40px;
 	font-size: x-large;
 	font-weight: bolder;
-	color: black;
+	color: white;
+	text-shadow:2px 2px 2px gray;
+	
 }
 
 a.admin:hover {
-	color: white;
+	color: purple;
 }
 
 a.title {
 	text-decoration: none;
 	color: white;
 	font-size: 45px;
+	text-shadow:2px 2px 2px black;
 }
 
 a.title:hover{

@@ -10,6 +10,7 @@
 	<table class="CSSTableGenerator">
 		<tr>
 			<td>User Name</td>
+			<td>Name</td>
 			<td>Email</td>
 			<td>Role</td>
 			<td>Enabled</td>
@@ -19,6 +20,8 @@
 
 			<tr>
 				<td><c:out value="${user.username}"></c:out></td>
+
+				<td><c:out value="${user.name}"></c:out></td>
 
 				<td><c:out value="${user.email}"></c:out></td>
 

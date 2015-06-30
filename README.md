@@ -40,4 +40,6 @@ Provided Apache Tiles 2.2.2 Integration. So that application has better gui with
 
 "JUnit Test Cases" and "Log4j Properties" were integrated. For testing case created 2 seperate datasource like dev and production. Attached SQL files for to be able to automatically generate production and test databases.
 
+--Optional form buttons and jquery integration.
+
 

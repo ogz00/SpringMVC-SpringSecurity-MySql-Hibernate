@@ -1,6 +1,6 @@
 # Spring Tutorial - 2
 
-Some of the best bractices *[SpringMVC](http://projects.spring.io/spring-framework/)* and *[Spring Security](http://projects.spring.io/spring-security/)* with *MySql Database*. Used *[Apache Tiles](https://tiles.apache.org/)* for templates and *Junit* for test cases. Furthermore I showed how you can integrate *[SpringWebFlow](http://projects.spring.io/spring-webflow/)*  to this project.
+Some of the best bractices *[SpringMVC](http://projects.spring.io/spring-framework/)* and *[Spring Security](http://projects.spring.io/spring-security/)* with *MySql Database*. Used *[Apache Tiles](https://tiles.apache.org/)* for templates and *Junit* for test cases. Furthermore I added *[SpringWebFlow](http://projects.spring.io/spring-webflow/)* usage examples to this project.
 
 Best practices of the using *Spring Form Elements* with *JSP* pages and MVC concepts.
 

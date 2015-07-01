@@ -40,6 +40,10 @@ Provided Apache Tiles 2.2.2 Integration. So that application has better gui with
 
 "JUnit Test Cases" and "Log4j Properties" were integrated. For testing case created 2 seperate datasource like dev and production. Attached SQL files for to be able to automatically generate production and test databases.
 
+Hibernate integration is over.
+All of the DAO's are working with Hibernate and JPA. Also Dao Classes contains jdbc queries as a block comment as well, because of showing the differences between SQL and HQL.
+
+
 --Optional form buttons and jquery integration.
 
 

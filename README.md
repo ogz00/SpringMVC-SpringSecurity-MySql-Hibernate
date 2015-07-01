@@ -1,19 +1,18 @@
 # Spring Tutorial - 2
 
-SpringMVC and Spring Security with MySql Database. Used Apache tiles for templates and Junit for test cases.
+Some of the best bractices *[SpringMVC](http://projects.spring.io/spring-framework/)* and *[Spring Security](http://projects.spring.io/spring-security/)* with *MySql Database*. Used *[Apache Tiles](https://tiles.apache.org/)* for templates and *Junit* for test cases. Furthermore I showed how you can integrate *[SpringWebFlow](http://projects.spring.io/spring-webflow/)*  to this project.
 
-Created a simple form applications on the JSP pages whiches integrated with validation annotations and spring form elements.
+Best practices of the using *Spring Form Elements* with *JSP* pages and MVC concepts.
 
 Spring MVC pattern with service layer and controllers objects. 
 
-CRUD operation from both of jsp pages and spring core
-its also depends on the MySql database.
+CRUD operation on the MySql with *Hibernate* and commented examples of *jdbc queries*
 
-Showed Integration of the 'Spring Config' files with the 'web.xml'. 
+Best Practices of setting the **Dispatcher Servlet** together with **web.xml**. 
 
-Configuration of the "Spring Security" and Create authenticated pages like Login and Admin Pages.
+Configuration of the *Spring Security* and Create authenticated pages like **Login** and **Admin Pages**.
 
-Security-Context Integration for Create Secure Users at the Database with Authority Roles.
+*Security-Context* Integration for Create Secure Users at the Database with Authority Roles.
 
 -------------------------------------------------------------------------------------------------------------
 (this tutorial is using JNDI data source; 
@@ -32,18 +31,20 @@ Next, modify $CATALINA_BASE/conf/server.xml to create the UserDatabase resource 
 	url="jdbc:mysql://localhost:3306/springtutorial" />
 
 
-example usage: add this codes to context.xml for <a target="_blank" href="https://tomcat.apache.org/tomcat-5.5-doc/jndi-resources-howto.html#UserDatabase_Resources"> Apache Tomcat</a>
+example usage: add this codes to context.xml for 
+*[Apache Tomcat](https://tomcat.apache.org/tomcat-5.5-doc/jndi-resources-howto.html#UserDatabase_Resources)*
 
 -------------------------------------------------------------------------------------------------------------
 	
-Provided Apache Tiles 2.2.2 Integration. So that application has better gui with header-body-footer parts, anymore.
+Provided *[Apache Tiles](https://tiles.apache.org/)* 2.2.2 Integration. So that application has better gui with header-body-footer parts, anymore.
 
-"JUnit Test Cases" and "Log4j Properties" were integrated. For testing case created 2 seperate datasource like dev and production. Attached SQL files for to be able to automatically generate production and test databases.
+*JUnit Test Cases* and *[Log4j](http://logging.apache.org/log4j/2.x/) Properties* were integrated. For testing case created 2 seperate datasource like dev and production. Attached SQL files for to be able to automatically generate production and test databases.
 
-Hibernate integration is over.
-All of the DAO's are working with Hibernate and JPA. Also Dao Classes contains jdbc queries as a block comment as well, because of showing the differences between SQL and HQL.
+*[Hibernate](http://hibernate.org/orm/)* integration is over.
+All of the DAO's are working with Hibernate and *[JPA](https://en.wikipedia.org/wiki/Java_Persistence_API)*.
+Also Dao Classes contains jdbc queries as a block comment as well, because of showing the differences between **SQL** and **HQL**.
 
 
---Optional form buttons and jquery integration.
+Optional form buttons and **jquery** integration.
 
 

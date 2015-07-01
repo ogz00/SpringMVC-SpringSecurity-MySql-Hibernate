@@ -6,10 +6,10 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 
-<h3>Welcome to the Home Page</h3>
+<h2 class="form-title">Welcome to the Home Page</h2>
 
 <sec:authorize access="isRememberMe()">
-	<h2># This user is login by "Remember Me Cookies".</h2>
+	<h2 ># This user is login by "Remember Me Cookies".</h2>
 </sec:authorize>
 
 <br>
@@ -38,15 +38,12 @@
 			<td><a href="${pageContext.request.contextPath}/createoffer">Create
 					Offer </a></td>
 		</c:if>
-
+		
 		<td><a href="${pageContext.request.contextPath}/offers">Show
 				Offers</a></td>
 		<td><a href="${pageContext.request.contextPath}/users">Users</a>
 		</td>
 		<td><a href="<c:url value="/newaccount"/>">Create New Account</a></td>
-
-
-
 	</tr>
 </table>
 

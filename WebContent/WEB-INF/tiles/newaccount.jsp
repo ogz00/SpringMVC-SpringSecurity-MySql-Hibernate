@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<h2>CREATE NEW ACCOUNT</h2>
+<h2 class="form-title">CREATE NEW ACCOUNT</h2>
 <br />
 
 <fr:form id="details" method="post"

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h3>Offerrs VIA SERVICE LAYER</h3>
+<h2 class="form-title">Offerrs VIA SERVICE LAYER</h2>
 <table class="CSSTableGenerator">
 	<tr>
 		<td>Name</td>

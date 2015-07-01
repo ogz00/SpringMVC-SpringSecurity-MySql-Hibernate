@@ -13,23 +13,21 @@ public class OffersService
 {
 	private OffersDao offersDao;
 
-
 	@Autowired
 	public void setOffersDao(OffersDao offersDao)
 	{
 		this.offersDao = offersDao;
 	}
 
-
 	public List<Offer> getCurrent()
 	{
-		return offersDao.getOffers();
+		return offersDao.getAllOffers();
 	}
 
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	public void createOffer(Offer offer)
 	{
-		offersDao.createOffer(offer);
+		offersDao.saveOrUpdate(offer);
 
 	}
 
@@ -70,14 +68,7 @@ public class OffersService
 
 	public void saveOrUpdateOffer(Offer offer)
 	{
-		if (offer.getId() != 0)
-		{
-			offersDao.updateOffer(offer);
-		}
-		else
-		{
-			offersDao.createOffer(offer);
-		}
+		offersDao.saveOrUpdate(offer);
 
 	}
 
@@ -85,6 +76,6 @@ public class OffersService
 	public void delete(int id)
 	{
 		offersDao.delete(id);
-		
+
 	}
 }

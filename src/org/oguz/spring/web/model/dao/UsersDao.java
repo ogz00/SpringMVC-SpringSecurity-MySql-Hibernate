@@ -7,6 +7,10 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.oguz.spring.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -16,32 +20,49 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Component("usersDao")
+@Repository
 public class UsersDao
 {
 
-	private NamedParameterJdbcTemplate jdbc;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-
-
-	@Autowired
+	//private NamedParameterJdbcTemplate jdbc;
+	/*@Autowired
 	public void setDataSource(DataSource jdbc)
 	{
 		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
+	}*/
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+
+	private SessionFactory sessionFactory;
+	
+	
+	public Session session(){
+		return this.sessionFactory.getCurrentSession();
 	}
+	
+	@Autowired
+	public void setSessionFactory(SessionFactory sessionFactory){
+		this.sessionFactory = sessionFactory;
+	}
+	
 
 
-	@Transactional
-	public boolean createUser(User user)
-	{
-
-		//BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
+	public void createUser(User user)
+	{	
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		session().save(user);
 		
-		MapSqlParameterSource params = new MapSqlParameterSource();
+
+		// BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(user);
+
+		/*MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("username", user.getUsername());
 		params.addValue("password", passwordEncoder.encode(user.getPassword()));
 		params.addValue("email", user.getEmail());
@@ -51,15 +72,17 @@ public class UsersDao
 
 		return jdbc.update(
 			"INSERT INTO `users` (`username`, `name`, `password`,`email`, `enabled`, `authority`) VALUES (:username, :name, :password,"
-				+ " :email, :enabled, :authority);", params) ==1;
+				+ " :email, :enabled, :authority);", params) == 1;*/
 
-		/*return jdbc.update(
-			"INSERT INTO `authorities` (`username`, `authority`) VALUES (:username, :authority);",
-			params) == 1;*/
+		/*
+		 * return jdbc.update(
+		 * "INSERT INTO `authorities` (`username`, `authority`) VALUES (:username, :authority);",
+		 * params) == 1;
+		 */
 	}
 
 	// GET ALL OFFERS FROM OFFERS TABLE
-	public List<User> getUsers()
+	/*public List<User> getUsers()
 	{
 
 
@@ -83,26 +106,28 @@ public class UsersDao
 					return user;
 				}
 			});
-	}
-
-	public List<User> getAllUsersAuth()
-	{
-
-		return jdbc.query(
-			"select * from users",
-			BeanPropertyRowMapper.newInstance(User.class));
+	}*/
+	
+	@SuppressWarnings("unchecked")
+	public List<User> getAllUsers()
+	{		
+		return session().createQuery("from User").list();
+		// return jdbc.query("select * from users",BeanPropertyRowMapper.newInstance(User.class));
 	}
 
 
 	public boolean exists(String username)
 	{
-
-		return jdbc.queryForObject(
-			"select count(*) from users where username = :username",
-			new MapSqlParameterSource("username", username), Integer.class) > 0;
+		Criteria criteria = session().createCriteria(User.class);
+		//criteria.add(Restrictions.eq("username", username));
+		criteria.add(Restrictions.idEq(username));
+		User user = (User)criteria.uniqueResult();
+		return user != null;
+		
+		
+		/*return jdbc.queryForObject("select count(*) from users where username = :username",
+			new MapSqlParameterSource("username", username), Integer.class) > 0; */
 	}
-	
-
 
 
 }

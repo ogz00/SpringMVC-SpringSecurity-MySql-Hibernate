@@ -11,6 +11,7 @@ import org.oguz.spring.web.model.User;
 import org.oguz.spring.web.service.OffersService;
 import org.oguz.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.authentication.UserServiceBeanDefinitionParser;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,8 @@ public class HomeController
 
 	private static Logger logger = Logger.getLogger(HomeController.class);
 
-	@Autowired
+	@Autowired(required=true)
+	@Qualifier("usersService")
 	public void setUserservice(UsersService userService)
 	{
 		this.userService = userService;
@@ -65,7 +67,7 @@ public class HomeController
 	public String showAdmin(Model model)
 	{
 
-		List<User> users = this.userService.getAllUsersAuth();
+		List<User> users = this.userService.getAllUsers();
 		model.addAttribute("users", users);
 
 		return "admin";

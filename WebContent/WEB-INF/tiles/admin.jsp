@@ -5,7 +5,7 @@
 <title>Admin</title>
 </head>
 <body>
-	<h3>Authorized Users Only</h3>
+	<h2 class="form-title">Authorized Users Only</h2>
 
 	<table class="CSSTableGenerator">
 		<tr>

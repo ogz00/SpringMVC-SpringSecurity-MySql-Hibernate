@@ -1,34 +1,48 @@
 package org.oguz.spring.web.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.oguz.spring.web.model.dao.FormValidationGroup;
+import org.oguz.spring.web.model.dao.PersistanceValidationGroup;
 import org.springframework.stereotype.Component;
 
-@Component
+@Entity(name="User")
+@Table(name="users")
 public class User
 {
 
-	@NotBlank
-	@Size(min = 8, max = 25)
-	@Pattern(regexp = "^\\w{8,}$")
+	@NotBlank(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
+	@Size(min = 8, max = 25, groups={PersistanceValidationGroup.class, FormValidationGroup.class})
+	@Pattern(regexp = "^\\w{8,}$", groups={PersistanceValidationGroup.class, FormValidationGroup.class})
+	@Id
+	@Column(name="username")
 	private String username;
 
-	@NotBlank
-	@Pattern(regexp = "^\\S+$")
-	@Size(min = 5, max = 25)
+	@NotBlank(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
+	@Pattern(regexp = "^\\S+$",groups={PersistanceValidationGroup.class, FormValidationGroup.class})
+	@Size(min = 5, max = 25, groups={FormValidationGroup.class})
+	@Column(name="password")
 	private String password;
 
-	@Email
+	@Email(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
+	@Column(name="email")
 	private String email;
 
-	@NotBlank
+	@NotBlank(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
 	@Size(min = 5, max = 60)
+	@Column(name="name")
 	private String name;
-
+	
+	@Column(name="enabled")
 	private boolean enabled = false;
+	@Column(name="authority")
 	private String authority;
 
 

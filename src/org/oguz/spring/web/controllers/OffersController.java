@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.oguz.spring.web.model.Offer;
+import org.oguz.spring.web.model.dao.FormValidationGroup;
 import org.oguz.spring.web.service.OffersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class OffersController
 {
+	private static Logger logger = Logger.getLogger(OffersController.class);
+	
 	private OffersService offersService;
-
 
 	@Autowired
 	public void setOffersService(OffersService offersService)
@@ -38,7 +42,8 @@ public class OffersController
 		List<Offer> offers = offersService.getCurrent();
 
 		model.addAttribute("offers", offers);
-
+		
+		logger.info("Showing Offers page ..");
 		return "offers";
 	}
 
@@ -55,7 +60,7 @@ public class OffersController
 		{
 			offer = new Offer();
 		}
-
+		logger.info("Showing create offer page ..");
 		model.addAttribute("offer", offer);
 
 		return "createoffer";
@@ -63,7 +68,7 @@ public class OffersController
 
 
 	@RequestMapping(value = "/docreate", method = RequestMethod.POST)
-	public String doCreate(Model model, @Valid Offer offer, BindingResult result,
+	public String doCreate(Model model, @Validated(value=FormValidationGroup.class) Offer offer, BindingResult result,
 		Principal principal,@RequestParam(value="delete", required=false) String delete)
 	{
 		if (result.hasErrors())
@@ -79,16 +84,13 @@ public class OffersController
 				String username = principal.getName();
 				offer.getUser().setUsername(username);
 				offersService.saveOrUpdateOffer(offer);
+				logger.info("execute create Offer ..");
 				return "redirect:offers";
 			}else{
+				logger.info("execute delete Offer ..");
 				offersService.delete(offer.getId());
 				return  "offerdeleted";
 			}
-		
-			
-			
-			
-		
 
 	}
 

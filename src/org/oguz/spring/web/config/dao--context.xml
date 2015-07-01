@@ -17,10 +17,41 @@
 		<jee:jndi-lookup id="dataSource" jndi-name="jdbc/SpringDB"
 			expected-type="javax.sql.DataSource">
 		</jee:jndi-lookup>
-		<bean id="transactionManager"
+		<!-- <bean id="transactionManager"
 			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 			<property name="dataSource" ref="dataSource"></property>
+		</bean> -->
+		<!-- Hibernate 4 SessionFactory Bean definition -->
+		<bean id="sessionFactory"
+			class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+			<property name="dataSource" ref="dataSource" />
+			<property name="annotatedClasses">
+				<list>
+					<value>org.oguz.spring.web.model.User</value>
+					<value>org.oguz.spring.web.model.Offer</value>
+				</list>
+			</property>
+			<property name="hibernateProperties">
+				<props>
+					<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+					<prop key="javax.persistence.validation.group.pre-persist">org.oguz.spring.web.model.dao.PersistanceValidationGroup
+					</prop>
+					<prop key="javax.persistence.validation.group.pre-remove">org.oguz.spring.web.model.dao.PersistanceValidationGroup
+					</prop>
+					<prop key="javax.persistence.validation.group.pre-update">org.oguz.spring.web.model.dao.PersistanceValidationGroup
+					</prop>
+					<prop key="hibernate.show_sql">true</prop>
+				</props>
+			</property>
 		</bean>
+
+
+		 <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> 
+			<property name="sessionFactory" ref="sessionFactory" /> 
+			</bean> 
+
+		<bean id="persistenceExceptionTranslationPostProcessor"
+			class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 		<tx:annotation-driven />
 	</beans>

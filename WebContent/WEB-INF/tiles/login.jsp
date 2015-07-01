@@ -7,38 +7,44 @@
 		document.f.username.focus();
 
 	});
+
+	function formSubmit() {
+		document.getElementById("loginForm").submit();
+	}
 </script>
 
-<h3>Login with Username and Password</h3>
+
+
+<h2 class="form-title">Login with Username and Password</h2>
 
 <c:if test="${param.error ne null}">
 	<p class="error">Wrong username or password</p>
 </c:if>
 
 <form name='f' action='${pageContext.request.contextPath}/login'
-	method='POST'>
+	method='POST' id="loginForm" class="form-container">
 
-	<table class="formtable">
-		<tr>
-			<td>Username:</td>
-			<td><input type='text' name='username' style="width: 200px" /></td>
-		</tr>
-		<tr>
-			<td>Password:</td>
-			<td><input type='password' name='password' style="width: 200px" /></td>
-		</tr>
+	<div class="form-title">
+		<h2>Login</h2>
+	</div>
+	<div class="form-title">Username</div>
+	<input class="form-field" type='text' name='username'
+		style="width: 200px" /><br />
 
-		<tr>
-			<td>Remember Me:</td>
-			<td><input type='checkbox' name='_spring_security_remember_me'
-				checked="checked" /></td>
-		</tr>
-		<tr>
-			<td colspan='2'><input name="submit" type="submit" value="Login" /></td>
-		</tr>
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+	<div class="form-title">Password</div>
+	<input class="form-field" type='password' name='password'
+		style="width: 200px" /><br />
 
-	</table>
+	<div class="form-title">
+		Remember Me &nbsp; <input type='checkbox'
+			name='_spring_security_remember_me' checked="checked" />
+	</div>
+	<br />
+	<div class="submit-container">
+		<input class="submit-button" type="submit" type="submit" value="Login" />
+	</div>
+	<input type="hidden" name="${_csrf.parameterName}"
+		value="${_csrf.token}" />
+
 </form>
 

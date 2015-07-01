@@ -48,9 +48,10 @@ public class UserDaoTests
 		User user = new User("oguzhankaracullu","Oguzhan Karacullu", "admin123", "oguzhan.karacullu@gmail.com", true, "ROLE_USER");
 
 
-		assertTrue("User creation should  return true", usersDao.createUser(user));
+		//assertTrue("User creation should  return true", usersDao.createUser(user));
+		 usersDao.createUser(user);
 
-		List<User> users = usersDao.getAllUsersAuth();
+		List<User> users = usersDao.getAllUsers();
 
 		assertEquals("Number of users should be 1.", 1, users.size());
 

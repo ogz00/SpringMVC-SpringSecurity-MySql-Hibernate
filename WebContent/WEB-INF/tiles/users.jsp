@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <br />
 
-<h3>Users VIA SERVICE LAYER</h3>
+<h2 class="form-title">Users VIA SERVICE LAYER</h2>
 <table class="CSSTableGenerator">
 	<tr>
 		<td>User Name</td>

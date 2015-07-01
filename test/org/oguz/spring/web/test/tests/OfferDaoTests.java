@@ -53,13 +53,13 @@ public class OfferDaoTests
 		User user = new User("oguzhankaracullu", "Oguzhan Karacullu", "admin123",
 			"oguzhan.karacullu@gmail.com", true, "ROLE_USER");
 
-		assertTrue("User creation should return true", usersDao.createUser(user));
+		 usersDao.createUser(user);
 
 		Offer offer = new Offer(user, "OFFER OFFER OFFER");
 
-		assertTrue("Offer creation should return true", offersDao.createOffer(offer));
+		 offersDao.saveOrUpdate(offer);
 
-		List<Offer> offers = offersDao.getOffers();
+		List<Offer> offers = offersDao.getAllOffers();
 
 		assertEquals("NUmber of offer should be 1", 1, offers.size());
 
@@ -69,7 +69,7 @@ public class OfferDaoTests
 		offer = offers.get(0);
 
 		offer.setText("Updated offer text.");
-		assertTrue("Offer update should return true", offersDao.updateOffer(offer));
+		offersDao.saveOrUpdate(offer);
 
 		Offer updated = offersDao.getOffer(offer.getId());
 
@@ -79,12 +79,12 @@ public class OfferDaoTests
 		// TEST GET BY ID
 		Offer offer2 = new Offer(user, "This is a test for user");
 
-		assertTrue("Offer creation should be return true", offersDao.createOffer(offer2));
+		this.offersDao.saveOrUpdate(offer2);
 		
 		List<Offer> userOffers = offersDao.getOffers(user.getUsername());
 		assertEquals("Should be 2 offers for user", 2, userOffers.size());
 
-		List<Offer> secondList = offersDao.getOffers();
+		List<Offer> secondList = offersDao.getAllOffers();
 
 		for (Offer current : secondList)
 		{
@@ -97,7 +97,7 @@ public class OfferDaoTests
 
 		offersDao.delete(offer.getId());
 
-		List<Offer> empty = offersDao.getOffers();
+		List<Offer> empty = offersDao.getAllOffers();
 
 		assertEquals("Offers lists should be empty.", 1, empty.size());
 

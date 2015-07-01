@@ -21,7 +21,7 @@
 //-->
 </script>
 
-<h2>CREATE NEW OFFER</h2>
+<h2 class="form-title">CREATE NEW OFFER</h2>
 <br />
 <fr:form method="post"
 	action="${pageContext.request.contextPath}/docreate"

@@ -8,43 +8,34 @@ import org.oguz.spring.web.model.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("usersService")
 public class UsersService
-{
+{	
+	
 	private UsersDao usersDao;
-
-
+	
 	@Autowired
 	public void setUsersDao(UsersDao usersDao)
 	{
 		this.usersDao = usersDao;
 	}
 
-	
-	//@Secured("ROLE_ADMIN")
 	public void createUser(User user)
 	{
 		usersDao.createUser(user);
-
 	}
-
 
 	public boolean exists(String username)
 	{
-
 		return usersDao.exists(username);
 	}
 
-	public List<User> getCurrent()
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	public List<User> getAllUsers()
 	{
-		return this.usersDao.getUsers();
-	}
-	
-	@Secured("ROLE_ADMIN")
-	public List<User> getAllUsersAuth()
-	{
-		return this.usersDao.getAllUsersAuth();
+		return this.usersDao.getAllUsers();
 	}
 
 }

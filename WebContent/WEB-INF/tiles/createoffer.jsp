@@ -27,7 +27,7 @@
 	action="${pageContext.request.contextPath}/docreate"
 	commandName="offer">
 	<fr:input type="hidden" path="id" name="id" />
-	<table class="CSSTableGenerator">
+	<table class="CSSTableGenerator" style="width:70% !important">
 		<tr>
 			<td></td>
 			<td></td>

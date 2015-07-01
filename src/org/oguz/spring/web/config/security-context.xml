@@ -20,6 +20,7 @@
 	</security:authentication-manager>
 
 	<security:http use-expressions="true">
+		
 		<security:intercept-url pattern="/admin"
 			access="hasRole('ROLE_ADMIN')" />
 		<!--<security:intercept-url pattern="/admin" access="permitAll" /> -->
@@ -32,6 +33,8 @@
 		<security:intercept-url pattern="offerdeleted"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/accountcreated" access="permitAll" />
+		<security:intercept-url pattern="/message" access="permitAll" />
 		<security:intercept-url pattern="/resource/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/offers"
@@ -42,7 +45,6 @@
 			access="permitAll" />
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" />
-		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/newaccount"
 			access="permitAll" />
 		<security:intercept-url pattern="/createaccount"

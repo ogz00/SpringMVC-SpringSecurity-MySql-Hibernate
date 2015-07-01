@@ -87,10 +87,11 @@ public class LoginController
 		usersService.createUser(user);
 
 		logger.info("execute create new user .." + user.toString());
-		return "redirect:users";
+		return "accountcreated";
 
 
 	}
+	
 
 
 }

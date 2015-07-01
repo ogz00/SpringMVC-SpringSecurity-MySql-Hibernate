@@ -52,6 +52,28 @@ AUTO_INCREMENT = 15
 DEFAULT CHARACTER SET = utf8;
 
 
+-- -----------------------------------------------------
+-- Table `springtest`.`messages`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `springtest`.`messages` ;
+
+CREATE TABLE IF NOT EXISTS `springtest`.`messages` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `subject` VARCHAR(150) NOT NULL,
+  `content` VARCHAR(1000) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(60) NOT NULL,
+  `username` VARCHAR(60) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_messages_users1_idx` (`username` ASC),
+  CONSTRAINT `fk_messages_users1`
+    FOREIGN KEY (`username`)
+    REFERENCES `springtest`.`users` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

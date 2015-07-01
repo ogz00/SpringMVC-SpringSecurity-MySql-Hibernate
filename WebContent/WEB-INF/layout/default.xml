@@ -64,6 +64,21 @@
 		<put-attribute name="title" value="Offer Deleted"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/offerdeleted.jsp"></put-attribute>
 	</definition>
+	
+	<definition name="accountcreated" extends="offers.base">
+		<put-attribute name="title" value="Account Created"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="showContactForm" extends="offers.base">
+		<put-attribute name="title" value="Send Message"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/contact.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="messageSent" extends="offers.base">
+		<put-attribute name="title" value="Mesage Sent"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/messagesent.jsp"></put-attribute>
+	</definition>
 
 
 

@@ -29,6 +29,7 @@
 				<list>
 					<value>org.oguz.spring.web.model.User</value>
 					<value>org.oguz.spring.web.model.Offer</value>
+					<value>org.oguz.spring.web.model.Message</value>
 				</list>
 			</property>
 			<property name="hibernateProperties">

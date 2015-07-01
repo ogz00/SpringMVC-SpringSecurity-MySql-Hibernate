@@ -3,7 +3,9 @@ package org.oguz.spring.web.service;
 
 import java.util.List;
 
+import org.oguz.spring.web.model.Message;
 import org.oguz.spring.web.model.User;
+import org.oguz.spring.web.model.dao.MessagesDao;
 import org.oguz.spring.web.model.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -12,15 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("usersService")
 public class UsersService
-{	
-	
+{
+	@Autowired
 	private UsersDao usersDao;
 	
 	@Autowired
-	public void setUsersDao(UsersDao usersDao)
-	{
-		this.usersDao = usersDao;
-	}
+	private MessagesDao messagesDao;
 
 	public void createUser(User user)
 	{
@@ -36,6 +35,11 @@ public class UsersService
 	public List<User> getAllUsers()
 	{
 		return this.usersDao.getAllUsers();
+	}
+
+	public void sendMessage(Message message)
+	{
+		messagesDao.saveOrUpdate(message);
 	}
 
 }

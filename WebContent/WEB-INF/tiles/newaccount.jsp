@@ -11,7 +11,7 @@
 	action="${pageContext.request.contextPath}/createaccount"
 	commandName="user">
 
-	<table class="CSSTableGenerator">
+	<table class="CSSTableGenerator" style="width:50% !important">
 		<tr></tr>
 		<tr>
 

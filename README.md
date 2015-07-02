@@ -45,6 +45,6 @@ All of the DAO's are working with Hibernate and *[JPA](https://en.wikipedia.org/
 Also Dao Classes contains jdbc queries as a block comment as well, because of showing the differences between **SQL** and **HQL**.
 
 
-Optional form buttons and **jquery** integration.
+Ajax/JSON requests and **jquery** integration for effective pages.
 
 

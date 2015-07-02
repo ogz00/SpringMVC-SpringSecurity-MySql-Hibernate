@@ -1,5 +1,7 @@
 package org.oguz.spring.web.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,8 +17,13 @@ import org.springframework.stereotype.Component;
 
 @Entity(name="User")
 @Table(name="users")
-public class User
+public class User implements Serializable
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9220829350719208225L;
 
 	@NotBlank(groups={PersistanceValidationGroup.class, FormValidationGroup.class})
 	@Size(min = 8, max = 25, groups={PersistanceValidationGroup.class, FormValidationGroup.class})

@@ -7,6 +7,7 @@
 		<put-attribute name="includes" value=""></put-attribute>
 		<put-attribute name="title" value="Ofers Home Page"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+		<put-attribute name="toolbar" value=""></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
 
@@ -14,6 +15,7 @@
 	</definition>
 
 	<definition name="home" extends="offers.base">
+		<put-attribute name="toolbar" value="/WEB-INF/tiles/toolbar.jsp"></put-attribute>
 		<put-attribute name="title" value="Offers Home Page"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/home.jsp"></put-attribute>
 	</definition>
@@ -59,27 +61,30 @@
 		<put-attribute name="title" value="Create Offer"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/createoffer.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="offerdeleted" extends="offers.base">
 		<put-attribute name="title" value="Offer Deleted"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/offerdeleted.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="accountcreated" extends="offers.base">
 		<put-attribute name="title" value="Account Created"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="showContactForm" extends="offers.base">
 		<put-attribute name="title" value="Send Message"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/contact.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="messageSent" extends="offers.base">
-		<put-attribute name="title" value="Mesage Sent"></put-attribute>
+		<put-attribute name="title" value="Message Sent"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/messagesent.jsp"></put-attribute>
 	</definition>
-
+	<definition name="messages" extends="offers.base">
+		<put-attribute name="title" value="Messages"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/messages.jsp"></put-attribute>
+	</definition>
 
 
 </tiles-definitions>

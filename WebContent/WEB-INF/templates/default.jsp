@@ -11,17 +11,21 @@
 	rel="stylesheet" type="text/css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resource/js/jquery.js"></script>
-	<tiles:insertAttribute name="includes"></tiles:insertAttribute>
-	
+<tiles:insertAttribute name="includes"></tiles:insertAttribute>
+
 </head>
 <body>
+
 	<div class=header>
 		<tiles:insertAttribute name="header"></tiles:insertAttribute>
+	</div>
+	<div class=content>
+		<tiles:insertAttribute name="toolbar"></tiles:insertAttribute>
 	</div>
 	<div class="content">
 		<tiles:insertAttribute name="content"></tiles:insertAttribute>
 	</div>
-	<hr/>
+	<hr />
 	<div class="footer">
 		<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 	</div>

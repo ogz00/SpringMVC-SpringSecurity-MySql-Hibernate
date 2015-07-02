@@ -26,7 +26,7 @@ public class HomeController
 
 	private static Logger logger = Logger.getLogger(HomeController.class);
 
-	@Autowired(required=true)
+	@Autowired(required = true)
 	@Qualifier("usersService")
 	public void setUserservice(UsersService userService)
 	{
@@ -41,14 +41,15 @@ public class HomeController
 	@RequestMapping("/")
 	public String showHome(Model model, Principal principal)
 	{
-		
-		
+
+
 		List<Offer> offers = offersService.getCurrent();
 		model.addAttribute("offers", offers);
-		
+
 		boolean hasOffer = false;
-		if(principal !=null){
-			hasOffer=offersService.hasOffer(principal.getName());
+		if (principal != null)
+		{
+			hasOffer = offersService.hasOffer(principal.getName());
 		}
 		model.addAttribute("hasOffer", hasOffer);
 

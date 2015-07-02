@@ -13,6 +13,56 @@ textarea {
 	height: 350px;
 }
 
+.message {
+	margin-bottom: 15px;
+	border-bottom: 1px dashed orange;
+}
+
+span.subject {
+	font-size: x-large;
+	font-weight: bold;
+	color: orange;
+}
+
+span.messagebody {
+	display: block;
+	font-style: italic;
+}
+
+span.name {
+	color: gray;
+	display: block;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+a.replylink:link {
+	text-decoration: none;
+	color: gray;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+a.replylink:hover {
+	color: orange;
+}
+
+form.replyform {
+	padding: 15px;
+	display: none;
+}
+
+textarea.replyarea {
+	width: 30%;
+	height: 200px;
+}
+
+input.replybutton {
+	display: block;
+	font-size: medium;
+	margin-top: 10px;
+}
+
 .formtable {
 	width: 600px;
 	padding: 10px;
@@ -234,7 +284,7 @@ input.delete {
 
 .CSSTableGenerator a:hover {
 	color: #5C8A00;
-	text-shadow: 1px 1px 1px black;
+	text-shadow: 1px 1px 1px white;
 	font-size: 16px;
 }
 
@@ -338,10 +388,19 @@ div.footer a:hover {
 }
 
 div.content {
-	position: relative;
-	padding: 50px;
+	position: static;
+	padding: 10px;
 	color: #42382c;
 	font-size: large;
+	width: 99%;
+	border: 1px dashed gray;
+}
+
+div.toolbar {
+	position: relative;
+	padding: 10px;
+	width: 97%;
+	vertical-align: top;
 }
 
 div.header {
@@ -361,29 +420,45 @@ a.login {
 	text-decoration: none;
 	position: absolute;
 	top: 10px;
-	right: 40px;
+	right: 2%;
 	font-size: x-large;
 	color: white;
 	text-shadow: 2px 2px 2px black;
 }
 
+a.mymessages {
+	text-decoration: none;
+	margin-top: 5px;
+	top: 2%;
+	position: absolute;
+	left: 4%;
+	font-size: x-large;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+	position: absolute;
+}
+
+a.mymessages:hover {
+	color: #42382c;
+	text-shadow: 1px 1px 1px white;
+}
+
 a.login:hover {
 	color: #42382c;
+	text-shadow: 1px 1px 1px white;
 }
 
 a.admin {
 	text-decoration: none;
-	position: absolute;
-	top: 10px;
-	left: 40px;
 	font-size: x-large;
 	font-weight: bolder;
 	color: white;
-	text-shadow: 2px 2px 2px gray;
+	text-shadow: 1px 1px 1px gray;
 }
 
 a.admin:hover {
 	color: #42382c;
+	text-shadow: 1px 1px 1px white;
 }
 
 a.title {
@@ -395,4 +470,5 @@ a.title {
 
 a.title:hover {
 	color: #42382c;
+	text-shadow: 1px 1px 1px white;
 }

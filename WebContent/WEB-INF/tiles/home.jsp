@@ -8,47 +8,7 @@
 
 <h2 class="form-title">Welcome to the Home Page</h2>
 
-<sec:authorize access="isRememberMe()">
-	<h2 ># This user is login by "Remember Me Cookies".</h2>
-</sec:authorize>
 
-<br>
-<table class="CSSTableGenerator">
-	<tr>
-		<td><c:choose>
-				<c:when test="${hasOffer}">
-
-					<a href="${pageContext.request.contextPath}/createoffer">Edit/Delete
-						Your Current Offer </a>
-				</c:when>
-				<c:otherwise>
-					<a href="${pageContext.request.contextPath}/createoffer">Create
-						Offer </a>
-				</c:otherwise>
-			</c:choose></td>
-	</tr>
-</table>
-<br>
-<br>
-<br>
-<table class="CSSTableGenerator">
-
-	<tr>
-		<c:if test="${!hasOffer}">
-			<td><a href="${pageContext.request.contextPath}/createoffer">Create
-					Offer </a></td>
-		</c:if>
-		
-		<td><a href="${pageContext.request.contextPath}/offers">Show
-				Offers</a></td>
-		<td><a href="${pageContext.request.contextPath}/users">Users</a>
-		</td>
-		<td><a href="<c:url value="/newaccount"/>">Create New Account</a></td>
-	</tr>
-</table>
-
-
-<br />
 
 
 <!-- DB TEST for this part you should setting your JNDI datasource according to 

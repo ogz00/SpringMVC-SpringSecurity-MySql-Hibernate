@@ -7,6 +7,7 @@
 <h2 class="form-title">Send Message</h2>
 <br />
 
+${fromUser}
 <fr:form id="messages" method="post" commandName="message">
 
 	<input name="_flowExecutionKey" value="${flowExecutionKey }"
@@ -14,13 +15,13 @@
 	<input name="_eventId" value="send" type="hidden" />
 
 
-	<table class="CSSTableGenerator" style="width:50% !important">
+	<table class="CSSTableGenerator" style="width: 50% !important">
 		<tr></tr>
 		<tr>
 
 			<td class="label">Your Name:</td>
 			<td><fr:input class="control" path="name" name="name"
-					type="text" /><br />
+					type="text" value="${fromName}" /><br />
 				<div class="error">
 					<fr:errors path="name"></fr:errors>
 				</div></td>
@@ -30,7 +31,7 @@
 
 			<td class="label">Your Email:</td>
 			<td><fr:input class="control" path="email" name="email"
-					type="text" /><br />
+					type="text" value="${fromEmail}" /><br />
 				<div class="error">
 					<fr:errors path="email"></fr:errors>
 				</div></td>

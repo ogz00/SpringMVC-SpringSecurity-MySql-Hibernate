@@ -6,9 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
-@Entity(name="Message")
-@Table(name="messages")
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.oguz.spring.web.model.dao.FormValidationGroup;
+import org.oguz.spring.web.model.dao.PersistanceValidationGroup;
+
+@Entity(name = "Message")
+@Table(name = "messages")
 public class Message implements Serializable
 {
 	/**
@@ -20,13 +26,21 @@ public class Message implements Serializable
 	@GeneratedValue
 	private int id;
 	
+	@NotBlank
+	@Size(min = 5, max = 100)
 	private String subject;
+	@NotBlank
+	@Size(min = 15, max = 1000)
 	private String content;
 
 	// Name of user sending message
+	@NotBlank
+	@Size(min = 5, max = 60)
 	private String name;
 
 	// Sender's email address
+	@NotBlank
+	@Email
 	private String email;
 
 	// Send message TO this user

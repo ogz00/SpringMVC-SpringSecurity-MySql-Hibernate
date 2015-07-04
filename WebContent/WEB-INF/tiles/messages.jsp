@@ -4,8 +4,11 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<div id="messages"></div>
+<meta name="_csrf" content="${_csrf.token}" />
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 
+<div id="messages"></div>
 
 
 <script type="text/javascript">
@@ -15,11 +18,44 @@
 		$("#form" + i).toggle();
 	}
 
-	function sendMessage(i) {
-
-		alert($("#textbox"+i).val());
+	function success(data) {
+		$("#form"+data.target).toggle();
+		startTimer();
+		$("#alert"+data.target).text("Message has been  sended.");
+		alert("message sended");
 	}
-	
+	function error(data) {
+		alert("Error sending message.");
+	}
+
+	$(function() {
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
+	});
+
+	function sendMessage(i, name, email) {
+
+		var text = $("#textbox" + i).val();
+		$.ajax({
+			"type" : 'POST',
+			"url" : "<c:url value='/sendmessage' />",
+			"data" : JSON.stringify({
+				"target" : i,
+				"text" : text,
+				"name" : name,
+				"email" : email
+			}),
+			"success" : success,
+			"error" : error,
+			"contentType" : "application/json",
+			"dataType" : "json"
+
+		});
+	}
+
 	function showMessages(data) {
 		$("div#messages").html("");
 
@@ -48,6 +84,12 @@
 			link.appendChild(document.createTextNode(message.email));
 			nameSpan.appendChild(link);
 			nameSpan.appendChild(document.createTextNode(")"));
+			
+			var alertSpan= document.createElement("span");
+			alertSpan.setAttribute("class", "alert");
+			alertSpan.setAttribute("id", "alert"+i);
+			//alertSpan.appendChild(document.createTextNode("message sent"));
+			
 
 			var replyForm = document.createElement("form");
 			replyForm.setAttribute("id", "form" + i);
@@ -55,17 +97,17 @@
 
 			var textarea = document.createElement("textarea");
 			textarea.setAttribute("class", "replyarea");
-			textarea.setAttribute("id", "textbox"+i);
+			textarea.setAttribute("id", "textbox" + i);
 
 			var replyButton = document.createElement("input");
 			replyButton.setAttribute("class", "replybutton");
 			replyButton.setAttribute("type", "button");
 			replyButton.setAttribute("value", "Reply");
-			replyButton.onclick = function(j) {
+			replyButton.onclick = function(j, name, email) {
 				return function() {
-					sendMessage(j);
+					sendMessage(j, name, email);
 				};
-			}(i);
+			}(i, message.name, message.email);
 
 			replyForm.appendChild(textarea);
 			replyForm.appendChild(replyButton);
@@ -73,6 +115,7 @@
 			messageDiv.appendChild(subjectSpan);
 			messageDiv.appendChild(contentSpan);
 			messageDiv.appendChild(nameSpan);
+			messageDiv.appendChild(alertSpan);
 			messageDiv.appendChild(replyForm);
 
 			$("div#messages").append(messageDiv);

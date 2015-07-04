@@ -17,11 +17,16 @@ import org.oguz.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.mail.MailAuthenticationException;
+import org.springframework.mail.MailSendException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +36,9 @@ public class LoginController
 {
 	private static Logger logger = Logger.getLogger(LoginController.class);
 	private UsersService usersService;
+
+	@Autowired
+	private MailSender mailSender;
 
 
 	@Autowired
@@ -100,12 +108,12 @@ public class LoginController
 
 	}
 
-	@RequestMapping(value ="/getmessages", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/getmessages", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Map<String, Object> getMessages(Principal principal)
 	{
 		List<Message> messages = null;
-		
+
 		if (principal == null)
 		{
 			messages = new ArrayList<Message>();
@@ -123,7 +131,53 @@ public class LoginController
 		return data;
 
 	}
-	
+
+	@RequestMapping(value = "/sendmessage", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, Object> sendMessage(Principal principal,
+		@RequestBody Map<String, Object> data)
+	{
+		String text = (String)data.get("text");
+		String name = (String)data.get("name");
+		String email = (String)data.get("email");
+		Integer target = (Integer)data.get("target");
+
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setFrom("oguzhan.karacullu@biznet.com.tr");
+		mail.setTo(email);
+		mail.setSubject("Re: " + name + ", your message");
+		mail.setText(text);
+
+		try
+		{
+			mailSender.send(mail);
+		}
+		catch (MailAuthenticationException e)
+		{
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		catch (MailSendException e)
+		{
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+			logger.info(ex.getClass());
+			logger.info("Can't sent message");
+		}
+
+
+		Map<String, Object> rval = new HashMap<String, Object>();
+		rval.put("success", true);
+		rval.put("target", target);
+		return rval;
+
+	}
+
 	@RequestMapping("/messages")
 	public String showMessages()
 	{

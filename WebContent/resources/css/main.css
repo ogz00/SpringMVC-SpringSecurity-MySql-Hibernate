@@ -36,6 +36,14 @@ span.name {
 	margin-bottom: 10px;
 }
 
+span.alert{
+	
+	display: block;
+	font-weight: bold;
+	font-style: italic;
+	color:orange;
+}
+
 a.replylink:link {
 	text-decoration: none;
 	color: gray;

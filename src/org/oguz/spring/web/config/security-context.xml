@@ -36,6 +36,10 @@
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/getmessages"
 			access="isAuthenticated()" />
+		<security:intercept-url pattern="/sendmessage"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/sendmessage/**"
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/accountcreated"
 			access="permitAll" />
